@@ -10,7 +10,7 @@ from src.api.model.shift import Shift
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb+srv://super:super@maincluster.tt6dyyu.mongodb.net/BitcoinPayroll?retryWrites=true&w=majority"
-
+app.config["EMPLOYER_WALLET_NAME"] = "regtest"
 
 class CustomJSONEncoder(JSONEncoder):
     def default(self, o):

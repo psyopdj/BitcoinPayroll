@@ -1,9 +1,9 @@
+import math
 from http import HTTPStatus
 
 from flask import Blueprint, request, make_response, jsonify
 
 from src.api.model.error import ErrorResponse
-from src.api.model.shift import Shift
 from src.api.service import shift as shift_service
 from src.api.service import employee as employee_service
 
@@ -68,13 +68,20 @@ def clock_in_or_out():
     # out_timestamp, then we need to clock in. Otherwise, we clock out
     if (len(current_shifts) == 0) or (current_shifts[0].out_timestamp is not None):
         print("Clocking in for employee: '{}'".format(employee._id))
-        shift = shift_service.clock_in(employee._id)
+        shift = shift_service.clock_in(employee)
         return make_response(jsonify(shift), HTTPStatus.CREATED)
     else:
         print("Clocking out for employee: '{}'".format(employee._id))
-        shift = shift_service.clock_out(employee._id)
+        shift = shift_service.clock_out(employee)
+        fee = 1000
+        amount = math.ceil(employee.pay_rate * ((shift.out_timestamp - shift.in_timestamp) / 3600))
+        if amount < fee:
+            response = ErrorResponse(HTTPStatus.BAD_REQUEST,
+                                     "Transaction not sent. Payout amount was less than the fee... Maybe try actually "
+                                     "working?")
+            return make_response(response.to_json_response(), response.code)
+        shift = shift_service.pay_out(shift, employee, amount, fee)
         return make_response(jsonify(shift), HTTPStatus.OK)
-
 
 
 @shift_api.route('/<id>', methods=['DELETE'])

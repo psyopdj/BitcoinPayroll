@@ -4,31 +4,30 @@ Project for Blockchains &amp; Smart Contracts taught at the University of Texas 
 
 Bitcoin Payroll is a system where employees are paid in satoshis immediately upon finishing their shift of work.
 
-* [BitcoinPayroll](#bitcoinpayroll)
-  * [Contributors](#contributors)
-  * [Introduction](#introduction)
-  * [Design](#design)
-    * [MongoDB](#mongodb)
-      * [Employees](#employees)
-      * [Shifts](#shifts)
-    * [API Architecture](#api-architecture)
-  * [Setup](#setup)
-    * [Bitcoin Node](#bitcoin-node)
-    * [Employer Wallet](#employer-wallet)
-    * [Run the API](#run-the-api)
-    * [Optional Hardware Setup](#optional-hardware-setup)
-      * [Setting up ngrok](#setting-up-ngrok)
-    * [Create Employee](#create-employee)
-  * [Using the App](#using-the-app)
-    * [With RFID Scanner](#with-rfid-scanner)
-    * [Without RFID Scanner](#without-rfid-scanner)
-
 ## Contributors
 
 Tyler Carlson (tc26763) \
 Jason Castillo (jzc248) \
 Saehej Kang (ssk2353) \
 Tyler Stubbs (tjs986)
+
+
+* [Introduction](#introduction)
+* [Design](#design)
+  * [MongoDB](#mongodb)
+    * [Employees](#employees)
+    * [Shifts](#shifts)
+  * [API Architecture](#api-architecture)
+* [Setup](#setup)
+  * [Bitcoin Node](#bitcoin-node)
+  * [Employer Wallet](#employer-wallet)
+  * [Run the API](#run-the-api)
+  * [Optional Hardware Setup](#optional-hardware-setup)
+    * [Setting up ngrok](#setting-up-ngrok)
+  * [Create Employee](#create-employee)
+* [Using the App](#using-the-app)
+  * [With RFID Scanner](#with-rfid-scanner)
+  * [Without RFID Scanner](#without-rfid-scanner)
 
 ## Introduction
 

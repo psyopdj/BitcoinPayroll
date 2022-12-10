@@ -73,11 +73,17 @@ def create_employee():
     """
     try:
         employee = Employee.from_json_dict(request.json)
+        existing_employee = employee_service.find_by_rfid(employee.rfid)
+        if existing_employee is not None:
+            response = ErrorResponse(HTTPStatus.BAD_REQUEST,
+                                     "RFID already is assigned for an employee. Please use a different RFID")
+            return make_response(response.to_json_response(), response.code)
         employee_service.insert(employee)
         return make_response(jsonify(employee), HTTPStatus.CREATED)
     except KeyError as e:
         response = ErrorResponse(HTTPStatus.BAD_REQUEST, "Missing field in request body: {}".format(e))
         return make_response(response.to_json_response(), response.code)
+
 
 @employee_api.route('/<id>', methods=['DELETE'])
 def delete_employee_by_id(id):

@@ -133,4 +133,5 @@ class RpcSocket:
 
     def send_transaction(self, transaction):
         encoded_tx = encode_tx(transaction)
-        return self.call('sendrawtransaction', encoded_tx)
+        result = self.call('sendrawtransaction', encoded_tx)
+        return result

@@ -11,6 +11,7 @@ Jason Castillo (jzc248) \
 Saehej Kang (ssk2353) \
 Tyler Stubbs (tjs986)
 
+## Table of Contents
 
 * [Introduction](#introduction)
 * [Design](#design)
